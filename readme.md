@@ -13,10 +13,10 @@ SPACE and LSHIFT for vertical movement
 ## Using WSL
 1. run lib.sh (requires cmake, python, and mingw to be installed in the linux distro)
 2. use make (static linking can be disabled if libstdc++-6.dll and libgcc_s_seh-1.dll are in path or the same directory as the executable)
-> - clean, deletes all build files
-> - build, compiles project in debug mode
-> - release, cleans and compiles project in release mode
-> - run, runs the output executable
+	- clean, deletes all build files
+	- build, compiles project in debug mode
+	- release, cleans and compiles project in release mode
+	- run, runs the output executable
 
 ## Using other
 1. create a folder named "include" in the root directory

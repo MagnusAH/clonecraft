@@ -1,4 +1,4 @@
-#Controls
+# Controls
 
 WASD for horizontal movement
 SPACE and LSHIFT for vertical movement
@@ -6,9 +6,9 @@ SPACE and LSHIFT for vertical movement
 1 increases render distance
 2 decreases render distance
 
-#Building Source
+# Building Source
 
-##Using WSL
+## Using WSL
 1. run lib.sh (requires cmake, python, and mingw to be installed)
 2. use make
   - clean, deletes all build files
@@ -16,7 +16,7 @@ SPACE and LSHIFT for vertical movement
   - release, cleans and compiles project in release mode
   - run, runs the output executable
 
-##Using other
+## Using other
 1. create a folder named "include" in the root directory
 2. inside the include folder create four folders: "GL", "GLFW", "KHR", and "stb"
 3. download gl3w

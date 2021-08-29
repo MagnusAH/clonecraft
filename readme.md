@@ -55,6 +55,13 @@ ESCAPE to release mouse
 > - transpose function is probably one of the fastest ways to transpose a 4x4 matrix on x86_64
 > - multiplication function is garbage and I need to rewrite it, \_mm_set() is a function you want to avoid using as much as possible
 
+## Renderer
+
+> rendering functions
+> - opengl 4.5+ has direct state access, it's faster and better to use, VAOs aren't attached to VBOs with it
+> - chunk meshes have a uniform worst case size quad count, a single indice buffer is generated and then used for every chunk mesh, eliminating the need to bind individual indice buffers
+> - frustum culling
+
 # TODO
 
 - rewrite matrix multiplication function and cleanup math library

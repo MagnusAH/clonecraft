@@ -1,4 +1,4 @@
-Due to matrix math implementations the project only runs on x86_64 and requires fma support (any cpu from the past 5 years should have this)
+Due to matrix math implementations the project currently only runs on x86_64 and requires fma support (any cpu from the past 5 years should have this)
 
 # Controls
 

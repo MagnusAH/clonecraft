@@ -5,6 +5,9 @@ Due to matrix math implementations the project currently only runs on x86_64 and
 WASD for horizontal movement  
 SPACE and LSHIFT for vertical movement  
 
+LEFT CLICK to capture mouse and control camera  
+ESCAPE to release mouse  
+
 1 increases render distance  
 2 decreases render distance  
 

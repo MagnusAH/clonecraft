@@ -12,7 +12,7 @@ SPACE and LSHIFT for vertical movement
 
 ## Using WSL
 1. run lib.sh (requires cmake, python, and mingw to be installed in the linux distro)
-2. use make
+2. use make (static linking can be disabled if libstdc++-6.dll and libgcc_s_seh-1.dll are in path or the same directory as the executable)
 > - clean, deletes all build files
 > - build, compiles project in debug mode
 > - release, cleans and compiles project in release mode
@@ -26,6 +26,13 @@ SPACE and LSHIFT for vertical movement
 	2. compile the generated files as a shared library copying the dll into "windows" in the root directory, the header files from "GL" into "include/GL", and the header files from "KHR" into "include/KHR"
 4. download glfw or build glfw from source, copying the dll into "windows" in the root directory and "glfw3.h" and "glfw3native.h" into "include/GLFW"
 5. download stb_image, stb_image_resize, stb_truetype, and stb_perlin from https://github.com/nothings/stb and place them inside of "include/stb"
+6. libraries
+	- library directory is "windows"
+	- libraries are "glfw" and "gl3w"
+7. includes
+	- include directory is "include"
+8. other
+	- sse4.2, avx2, and fma must be supported by the compiler
 
 # Useful Things
 

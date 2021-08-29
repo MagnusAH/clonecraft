@@ -1,3 +1,5 @@
+Due to matrix math implementations the project only runs on x86_64 and requires fma support (any cpu from the past 5 years should have this)
+
 # Controls
 
 WASD for horizontal movement
@@ -21,8 +23,22 @@ SPACE and LSHIFT for vertical movement
 2. inside the include folder create four folders: "GL", "GLFW", "KHR", and "stb"
 3. download gl3w
 	1. run gl3w_gen.py
-	2. compile the generated files as a shared library copying the dll into "windows" in the root directory and the header files from "GL" into "include/GL" and header files from "KHR" into "include/KHR"
+	2. compile the generated files as a shared library copying the dll into "windows" in the root directory, the header files from "GL" into "include/GL", and the header files from "KHR" into "include/KHR"
 4. download glfw or build glfw from source, copying the dll into "windows" in the root directory and "glfw3.h" and "glfw3native.h" into "include/GLFW"
 5. download stb_image, stb_image_resize, stb_truetype, and stb_perlin from https://github.com/nothings/stb and place them inside of "include/stb"
 
+# Useful Things
 
+## ChunkMap
+
+> 3D hashmap, no hash function
+> - bucket list is a "3D" array (1D but mapped to 3D, would probably be best to be truely 3D if the hashmap were to be resized) 
+> - coordinates in 3D space are modulated by the hashmap size in the corresponding axis to find the coordinates in the hashmap
+> - could be extended to float coordinates by treating the bits as an int
+
+## Matrix4f
+
+> 4x4 matrix class
+> - inverse function beats out glm in performance
+> - transpose function is probably one of the fastest ways to transpose a 4x4 matrix on x86_64
+> - multiplication function is garbage, don't use it, \_mm_set_ps() is a function you want to avoid using as much as possible

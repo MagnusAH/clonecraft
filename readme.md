@@ -41,4 +41,4 @@ SPACE and LSHIFT for vertical movement
 > 4x4 matrix class
 > - inverse function beats out glm in performance
 > - transpose function is probably one of the fastest ways to transpose a 4x4 matrix on x86_64
-> - multiplication function is garbage, don't use it, \_mm_set_ps() is a function you want to avoid using as much as possible
+> - multiplication function is garbage and I need to rewrite it, \_mm_set_ps() is a function you want to avoid using as much as possible

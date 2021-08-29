@@ -42,7 +42,7 @@ SPACE and LSHIFT for vertical movement
 > 3D hashmap, no hash function
 > - bucket list is a "3D" array (1D but mapped to 3D, would probably be best to be truely 3D if the hashmap were to be resizable) 
 > - coordinates in 3D space are modulated by the hashmap size in the corresponding axis to find the coordinates in the hashmap
-> - could be extended to float coordinates by treating the float as an int
+> - could be extended to float coordinates by treating the floats as ints
 
 ## Matrix4f
 

@@ -58,6 +58,8 @@ ESCAPE to release mouse
 # TODO
 
 - rewrite matrix multiplication function and cleanup math library
+- create a proper implementation for adjusting the view distance (don't delete all the meshes when the view distance is changed)
+- add handling for null chunks
 - split server off onto separate thread
 - split chunk generation and mesh generation onto separate threads and multithread them
 - load textures into 16 2048x2048 texture atlases for drawing textures with only one set of binds per frame

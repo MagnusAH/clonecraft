@@ -50,3 +50,10 @@ SPACE and LSHIFT for vertical movement
 > - inverse function beats out glm in performance
 > - transpose function is probably one of the fastest ways to transpose a 4x4 matrix on x86_64
 > - multiplication function is garbage and I need to rewrite it, \_mm_set() is a function you want to avoid using as much as possible
+
+# TODO
+
+- rewrite matrix multiplication function and cleanup math library
+- split server off onto separate thread
+- split chunk generation and mesh generation onto separate threads and multithread them
+- load textures into 16 2048x2048 texture atlases for drawing textures with only one set of binds per frame

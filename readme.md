@@ -11,7 +11,7 @@ SPACE and LSHIFT for vertical movement
 # Building Source
 
 ## Using WSL
-1. run lib.sh (requires cmake, python, and mingw to be installed)
+1. run lib.sh (requires cmake, python, and mingw to be installed in the linux distro)
 2. use make
 > - clean, deletes all build files
 > - build, compiles project in debug mode

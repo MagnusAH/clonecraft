@@ -33,13 +33,14 @@ SPACE and LSHIFT for vertical movement
 	- include directory is "include"
 8. other
 	- sse4.2, avx2, and fma must be supported by the compiler
+	- executable needs to be in the "windows" folder or it won't be able to find the libraries or shader files
 
 # Useful Things
 
 ## ChunkMap
 
 > 3D hashmap, no hash function
-> - bucket list is a "3D" array (1D but mapped to 3D, would probably be best to be truely 3D if the hashmap were to be resized) 
+> - bucket list is a "3D" array (1D but mapped to 3D, would probably be best to be truely 3D if the hashmap were to be resizable) 
 > - coordinates in 3D space are modulated by the hashmap size in the corresponding axis to find the coordinates in the hashmap
 > - could be extended to float coordinates by treating the bits as an int
 

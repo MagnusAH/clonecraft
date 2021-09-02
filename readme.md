@@ -22,7 +22,7 @@ ESCAPE to release mouse
 	- release, cleans and compiles project in release mode
 	- run, runs the output executable
 
-## Using other
+## Using other ( it's going to be easier to setup wsl than this )
 1. create a folder named "include" in the root directory
 2. inside the include folder create four folders: "GL", "GLFW", "KHR", and "stb"
 3. download gl3w

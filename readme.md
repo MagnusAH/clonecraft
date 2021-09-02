@@ -1,5 +1,5 @@
-Due to matrix math implementations the project currently only runs on x86_64 and requires fma support (any cpu from the past 5 years should have this)
-Please excuse the lazy programmer art (I swear it's temporary)
+Due to matrix math implementations the project currently only runs on x86_64 and requires fma support (any cpu from the past 5 years should have this)  
+Please excuse the lazy programmer art (I swear it's temporary)  
 
 # Controls
 

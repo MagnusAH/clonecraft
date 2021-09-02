@@ -101,18 +101,28 @@ struct Mesh
 		// indices.push_back(base);
 	}
 
-	inline void pushDir(Vector3f p0, Vector3f p1, Vector3f p2, Vector3f p3, float x, float y, float z, float nx, float ny, float nz)
+	inline void pushDir(int textureID, Vector3f p0, Vector3f p1, Vector3f p2, Vector3f p3, float x, float y, float z, float nx, float ny, float nz)
 	{
+		const int atlasWidth = 1;
+		const int atlasHeight = 4;
+
+		const float widthScale = 1.0f / (float)atlasWidth;
+		const float heightScale = 1.0f / (float)atlasHeight;
+
+		float min_x = (textureID % atlasWidth) * widthScale;
+		float max_x = min_x + widthScale;
+		float min_y = (textureID / atlasWidth) * heightScale;
+		float max_y = min_y + heightScale;
 
 		Vector3f
 			normal(nx, ny, nz),
 			pos(x, y, z);
 
 		Vector2f
-			t0(0, 0),
-			t1(1, 0),
-			t2(1, 1),
-			t3(0, 1);
+			t0(min_x, max_y), // 0, 1
+			t1(max_x, max_y), // 1, 1
+			t2(max_x, min_y), // 1, 0
+			t3(min_x, min_y); // 0, 0
 
 		VertexPNT
 			v0(pos+p0, normal, t0),
@@ -131,7 +141,7 @@ struct Mesh
 			p2(0.5f, 0.5f, 0.5f),
 			p3(-0.5f, 0.5f, 0.5f);
 
-		pushDir(p0, p1, p2, p3, x, y, z, 0, 0, 1);
+		pushDir(1, p0, p1, p2, p3, x, y, z, 0, 0, 1);
 	}
 
 	inline void pushBack(float x, float y, float z)
@@ -142,7 +152,7 @@ struct Mesh
 			p2(-0.5f, 0.5f, -0.5f),
 			p3(0.5f, 0.5f, -0.5f);
 
-		pushDir(p0, p1, p2, p3, x, y, z, 0, 0, -1);
+		pushDir(1, p0, p1, p2, p3, x, y, z, 0, 0, -1);
 	}
 
 
@@ -154,7 +164,7 @@ struct Mesh
 			p2(-0.5f, 0.5f, 0.5f),
 			p3(-0.5f, 0.5f, -0.5f);
 
-		pushDir(p0, p1, p2, p3, x, y, z, -1, 0, 0);
+		pushDir(1, p0, p1, p2, p3, x, y, z, -1, 0, 0);
 	}
 
 
@@ -166,7 +176,7 @@ struct Mesh
 			p2(0.5f, 0.5f, -0.5f),
 			p3(0.5f, 0.5f, 0.5f);
 
-		pushDir(p0, p1, p2, p3, x, y, z, 1, 0, 0);
+		pushDir(1, p0, p1, p2, p3, x, y, z, 1, 0, 0);
 	}
 
 
@@ -178,7 +188,7 @@ struct Mesh
 			p2(0.5f, 0.5f, -0.5f),
 			p3(-0.5f, 0.5f, -0.5f);
 
-		pushDir(p0, p1, p2, p3, x, y, z, 0, 1, 0);
+		pushDir(2, p0, p1, p2, p3, x, y, z, 0, 1, 0);
 	}
 
 
@@ -190,6 +200,6 @@ struct Mesh
 			p2(0.5f, -0.5f, 0.5f),
 			p3(-0.5f, -0.5f, 0.5f);
 
-		pushDir(p0, p1, p2, p3, x, y, z, 0, -1, 0);
+		pushDir(0, p0, p1, p2, p3, x, y, z, 0, -1, 0);
 	}
 };

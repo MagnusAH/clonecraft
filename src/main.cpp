@@ -7,19 +7,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "util/io.hpp"
-
-#include "graphics/shader.hpp"
 #include "graphics/renderer.hpp"
-
-#include "math/matrix4f.hpp"
-#include "math/vector4f.hpp"
-
-#include "math/frustum.hpp"
-
 #include "window/input.hpp"
-
-#include "game/mesh.hpp"
 #include "game/player.hpp"
 
 #define _USE_MATH_DEFINES
@@ -31,20 +20,6 @@
 #include "game/client/mesher.hpp"
 #include "game/server/server.hpp"
 #include "game/client/client.hpp"
-
-inline void printF4(float* f)
-{
-	printf("[%f, %f, %f, %f]\n", f[0], f[1], f[2], f[3]);
-}
-
-void printMatrix(Matrix4f m)
-{
-	printf("-=MATRIX=-\n");
-	printF4(m.mat);
-	printF4(&m.mat[4]);
-	printF4(&m.mat[8]);
-	printF4(&m.mat[12]);
-}
 
 #include <string>
 #include <sstream>
@@ -99,6 +74,37 @@ int main(void)
 	int frames = 0;
 	int fps = 0;
 	auto lastTime = std::chrono::high_resolution_clock::now();
+
+// TEXTURE TEST
+
+	{
+		int width, height, channels;
+		unsigned char* im_dirt = stbi_load("textures/dirt.png", &width, &height, &channels, 0);
+		unsigned char* im_grass_dirt = stbi_load("textures/grass_dirt.png", &width, &height, &channels, 0);
+		unsigned char* im_grass = stbi_load("textures/grass.png", &width, &height, &channels, 0);
+
+		uint64_t image_size = width * height * channels;
+
+		unsigned char* atlas = (unsigned char*) malloc(width * height * 4 * channels);
+		memcpy(atlas, im_dirt, image_size);
+		memcpy(atlas + image_size, im_grass_dirt, image_size);
+		memcpy(atlas + (image_size * 2), im_grass, image_size);
+
+		stbi_image_free(im_dirt);
+		stbi_image_free(im_grass_dirt);
+		stbi_image_free(im_grass);
+
+		GLuint atlasID;
+		glGenTextures(1, &atlasID);
+		glBindTexture(GL_TEXTURE_2D, atlasID);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, 5); // 2^5 = 32 (tile size)
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height * 4, 0, GL_RGBA, GL_UNSIGNED_BYTE, atlas);
+		glGenerateMipmap(GL_TEXTURE_2D);
+
+
+	}
 
 	window->show();
     while(!window->closeRequested())

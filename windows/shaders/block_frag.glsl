@@ -6,8 +6,10 @@ in vec2 texCoords;
 
 out vec4 outColor;
 
+uniform sampler2D atlas;
+
 void main()
 {
-	float diff = max(dot(normal, toLight), 0.3f);
-	outColor = vec4(diff * vec3(0.3f, 0.8f, 0.5f), 1);
+	float diffuse = max(dot(normal, toLight), 0.3f);
+	outColor = diffuse * texture(atlas, texCoords);
 }

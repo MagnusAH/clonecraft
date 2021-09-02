@@ -1,4 +1,5 @@
 Due to matrix math implementations the project currently only runs on x86_64 and requires fma support (any cpu from the past 5 years should have this)
+Please excuse the lazy programmer art (I swear it's temporary)
 
 # Controls
 
@@ -69,4 +70,4 @@ ESCAPE to release mouse
 - add handling for null chunks client side
 - split server off onto separate thread
 - split chunk generation and mesh generation onto separate threads and multithread them
-- load textures into 16 2048x2048 texture atlases for drawing textures with only one set of binds per frame
+- load textures into 16 2048x2048 texture atlases for drawing textures with only one set of binds per frame (partially done)
